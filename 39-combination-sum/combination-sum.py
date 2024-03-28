@@ -10,6 +10,6 @@ class Solution(object):
                 backtrack(i, target - candidates[i], path + [candidates[i]])
 
         result = []
-        candidates.sort()
+        # candidates.sort()
         backtrack(0, target, [])
         return result
