@@ -5,7 +5,8 @@ class Solution:
         
         Max_Len=1
         Max_Str=s[0]
-        dp = [[False for _ in range(len(s))] for _ in range(len(s))]
+        dp = [[False for _ in range(len(s))
+        ] for _ in range(len(s))]
         for i in range(len(s)):
             dp[i][i] = True
             for j in range(i):
