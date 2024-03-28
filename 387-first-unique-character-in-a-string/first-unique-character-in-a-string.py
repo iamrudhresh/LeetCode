@@ -1,13 +1,3 @@
 class Solution:
     def firstUniqChar(self, s: str) -> int:
-        setval = []
-
-        for i in s:
-            if i not in setval:
-                setval.append(i)
-
-        for i in setval:
-            if s.count(i) == 1:
-                return s.index(i)
-
-        return -1
+        return (z:=Counter(s)) and next((i for i,c in enumerate(s) if z[c]<2),-1)
