@@ -1,4 +1,3 @@
-				// \U0001f609\U0001f609\U0001f609\U0001f609Please upvote if it helps \U0001f609\U0001f609\U0001f609\U0001f609
 class Solution {
 public:
     int numRescueBoats(vector<int>& people, int limit) {
@@ -8,8 +7,6 @@ public:
         int cnt = 0;
         while(i <= j)
         {   
-            // lightest person + heaviest person sum <= limit
-            // they can go together
             if(people[i] + people[j] <= limit)
             {
                 ++i;
