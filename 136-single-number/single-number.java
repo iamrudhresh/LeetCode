@@ -1,9 +1,16 @@
 class Solution {
     public int singleNumber(int[] nums) {
-        int result=0;
-        for(int i=0; i<nums.length; i++) {
-            result = result^nums[i];
+        Map<Integer, Integer> one = new HashMap<>();
+        int n = nums.length;
+        for(int num:nums){
+            one.put(num, one.getOrDefault(num,0)+1);
         }
-        return result;
+         for (Map.Entry<Integer, Integer> entry : one.entrySet()) {
+            if (entry.getValue() == 1) {
+                return entry.getKey();
+            }
+         }
+         return -1;
+
     }
 }
