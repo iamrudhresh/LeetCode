@@ -1,14 +1,19 @@
+import java.util.Stack;
+
 class Solution {
     public void reverseString(char[] s) {
-        int i=0;
-        int j=s.length-1;
+        Stack<Character> st = new Stack<>();
 
-        while(i<=j){
-            char temp=s[i];
-            s[i]=s[j];
-            s[j]=temp;
-            i++;
-            j--;
+        // Push all characters
+        for (char c : s) {
+            st.push(c);
         }
+
+        // Pop back into the array (in place)
+        int i = 0;
+        while (!st.isEmpty()) {
+            s[i++] = st.pop();
+        }
+        // No return — method is void
     }
 }
