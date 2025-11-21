@@ -1,27 +1,18 @@
 class Solution {
     public int countPalindromicSubsequence(String s) {
-        int n = s.length();
-        int[] first = new int[26];
-        int[] last = new int[26];
-        for (int i = 0; i < 26; i++) {
-            first[i] = -1;
-            last[i] = -1;
-        }
-        for (int i = 0; i < n; i++) {
-            int c = s.charAt(i) - 'a';
-            if (first[c] == -1) first[c] = i;
-            last[c] = i;
-        }
-        int ans = 0;
-        for (int c = 0; c < 26; c++) {
-            if (first[c] != -1 && last[c] - first[c] > 1) {
-                int mask = 0;
-                for (int i = first[c] + 1; i < last[c]; i++) {
-                    mask |= 1 << (s.charAt(i) - 'a');
+        int n=s.length();
+        int cnt=0;
+        for(char ch='a'; ch<='z'; ch++){
+            int first=s.indexOf(ch);
+            int last=s.lastIndexOf(ch);
+            if(first != -1 && last-first >= 2){
+                boolean[] seen=new boolean[26];
+                for(int i=first+1; i<last; i++){
+                    seen[s.charAt(i)-'a']=true;
                 }
-                ans += Integer.bitCount(mask);
+                for(boolean b: seen) if(b) cnt++;
             }
         }
-        return ans;
+        return cnt;
     }
 }
